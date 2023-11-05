@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Food Options Menu</title>
+<style>
+.food-option {
+  display: flex;
+  align-items: center;
+}
+
+.food-image {
+  width: 250px;
+  height: 250px;
+}
+
+.food-button {
+  margin-left: 20px;
+}
+html, body {
+  height: 100%;
+}
+
+.food-options {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+</head>
+<body>
+
+<h1>Food Options</h1>
+
+<div class="food-options">
+
+  <div class="food-option">
+    <img class="food-image" src=" " alt="Noodles">
+    <button class="food-button yes">Yes</button>
+    <button class="food-button no">No</button>
+  </div>
+
+  <div class="food-option">
+    <img class="food-image" src="https://example.com/pasta.jpg" alt="Pasta">
+    <button class="food-button yes">Yes</button>
+    <button class="food-button no">No</button>
+  </div>
+
+  <div class="food-option">
+    <img class="food-image" src="https://example.com/fries.jpg" alt="Fries">
+    <button class="food-button yes">Yes</button>
+    <button class="food-button no">No</button>
+  </div>
+
+</div>
+
+<script>
+// Hide all food options except the first one
+for (var i = 1; i < document.querySelectorAll(".food-option").length; i++) {
+  document.querySelectorAll(".food-option")[i].style.display = "none";
+}
+
+// Add an event listener to each yes button
+var yesButtons = document.querySelectorAll(".food-button.yes");
+for (var i = 0; i < yesButtons.length; i++) {
+  yesButtons[i].addEventListener("click", function() {
+    // Show the next food option
+    var nextFoodOption = this.parentNode.nextElementSibling;
+    nextFoodOption.style.display = "block";
+
+    // Hide the current food option
+    this.parentNode.style.display = "none";
+  });
+}
+
+// Add an event listener to each no button
+var noButtons = document.querySelectorAll(".food-button.no");
+for (var i = 0; i < noButtons.length; i++) {
+  noButtons[i].addEventListener("click", function() {
+    // Hide the current food option
+    this.parentNode.style.display = "none";
+  });
+}
+</script>
+
+</body>
+</html>
